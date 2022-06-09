@@ -1,0 +1,1 @@
+# wordpress-functionality-template
