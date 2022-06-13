@@ -1,0 +1,100 @@
+@mixin clearfix {
+	*zoom: 1;
+
+	&:before, &:after {
+		content: " ";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+@mixin spacing-layout( $property, $prefix: '' ) {
+	$property_class: #{$property} !default;
+
+	@if $prefix != '' {
+		$property_class: #{$prefix}-#{$property};
+	}
+
+	@each $direction in $directions {
+		.#{$property_class}-#{$direction} {
+			#{$property}-#{$direction}: 2rem;
+		}
+
+		@each $type, $size in $spacing-sizes {
+			.#{$property_class}-#{$direction}-#{$type} {
+				#{$property}-#{$direction}: $size;
+			}
+		}
+	}
+
+	.#{$property_class}-all {
+		#{$property}: 2rem;
+	}
+
+	.#{$property_class}-vertical {
+		#{$property}-top: 2rem;
+		#{$property}-bottom: 2rem;
+	}
+
+	.#{$property_class}-horizontal {
+		#{$property}-left: 2rem;
+		#{$property}-right: 2rem;
+	}
+
+	@each $type, $size in $spacing-sizes {
+		.#{$property_class}-all-#{$type} {
+			#{$property}: $size;
+		}
+
+		.#{$property_class}-vertical-#{$type} {
+			#{$property}-top: $size;
+			#{$property}-bottom: $size;
+		}
+
+		.#{$property_class}-horizontal-#{$type} {
+			#{$property}-left: $size;
+			#{$property}-right: $size;
+		}
+	}
+}
+
+
+// 02. Placeholder
+@mixin placeholder-style() {
+	&::-webkit-input-placeholder {
+		@content;
+	}
+
+	&:-moz-placeholder { /* Firefox 18- */
+		@content;
+	}
+
+	&::-moz-placeholder {  /* Firefox 19+ */
+		@content;
+	}
+
+	&:-ms-input-placeholder {
+		@content;
+	}
+}
+
+// 04. Positioning
+@mixin position($top, $right: $top, $bottom: $top, $left: $right) {
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+
+@mixin featured_image_container_hover() {
+	&:before {
+		transform: scale(1.05);
+	}
+	&:after {
+		opacity: 1;
+	}
+}

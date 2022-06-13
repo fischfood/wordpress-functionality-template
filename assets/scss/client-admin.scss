@@ -1,0 +1,29 @@
+body .block-editor-block-list__layout {
+	div.wp-block-group {
+		&:before, &:after {
+			content: "Group Start";
+			background: #ccc;
+			text-align: center;
+			width: 100%;
+			display: block;
+			font-size: 14px;
+			padding: .5rem;
+			text-transform: uppercase;
+			opacity: .6;
+			top: auto;
+			right: auto;
+			bottom: auto;
+			left: auto;
+			position: relative;
+		}
+
+		&:after {
+			content: "Group End" !important;
+		}
+
+		div.wp-block-group {
+			width: 98%;
+			margin-left: 1%;
+		}
+	}
+}

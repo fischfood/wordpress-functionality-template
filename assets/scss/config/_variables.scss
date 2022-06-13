@@ -1,0 +1,87 @@
+/**
+ *
+ * 01. Dimensions
+ * 02. Colors
+ * 03. Animations
+ * 04. Breakpoints
+ * 05. Spacing
+ * 06. Header
+ * 07. Footer
+ **/
+
+// 01. Dimensions
+$base: 16px;
+
+// 02. Colors
+$client-blue: #00bbff;
+$client-dark-blue: #012430;
+
+$primary-color: $client-blue;
+$secondary-color: $client-dark-blue;
+
+$white: #ffffff;
+$lightest-gray: #F9F9F9;
+$lighter-gray: #F0F0F0;
+$light-gray: #929292;
+$medium-gray: #737373;
+$gray: $medium-gray;
+$dark-gray: #545454;
+$black: #383838;
+
+$primary-light: scale-color( $primary-color, $lightness: 8% );
+$primary-dark:  scale-color( $primary-color, $lightness: -8% );
+
+$secondary-light: scale-color( $secondary-color, $lightness: 8% );
+$secondary-dark:  scale-color( $secondary-color, $lightness: -8% );
+
+$color-map: (
+	primary : $primary-color,
+	secondary : $secondary-color,
+	light-primary : $primary-light,
+	light-secondary : $secondary-light,
+	dark-primary : $primary-dark,
+	dark-secondary : $secondary-dark,
+	white : $white
+	lightest-gray : $lightest-gray,
+	lighter-gray : $lighter-gray,
+	light-gray : $light-gray,
+	medium-gray : $medium-gray,
+	gray : $gray,
+	dark-gray : $dark-gray,
+	black : $black,
+);
+
+// 03. Animations
+$global-timing: 300ms;
+$global-easing: ease-out;
+
+// 04. Breakpoints
+$xsmall-only: 'screen and (max-width: 600px)';
+$small-up: 'screen and (min-width: 601px)';
+$small-only: 'screen and (max-width: 800px)';
+$medium-up: 'screen and (min-width: 801px)';
+$medium-only: 'screen and (min-width: 801px) and (max-width: 1023px)';
+$medium-down: 'screen and (max-width: 1023px)';
+$large-up: 'screen and (min-width: 1024px)';
+$medium-only: 'screen and (min-width: 1024px) and (max-width: 1200px)';
+$xlarge-up: 'screen and (min-width: 1201px)';
+$xlarge-only: 'screen and (min-width: 1201px) and (max-width: 1440px)';
+$xxlarge-up: 'screen and (min-width: 1441px)';
+
+// 05. Spacing
+$directions: (
+	top,
+	right,
+	bottom,
+	left
+);
+
+$spacing-sizes: (
+	none   : 0,
+	half   : 0.5rem,
+	small  : 1rem,
+	medium : 2rem,
+	large  : 4rem,
+	xlarge : 6rem,
+	xxlarge : 8rem
+);

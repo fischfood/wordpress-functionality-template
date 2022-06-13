@@ -1,0 +1,336 @@
+@import
+	'genesis-overrides',
+	'shortcodes'
+;
+
+/*
+ * 00. Global Items
+ * 01. Socials
+ * 02. Breakpoints
+ * 03. Spacing
+ * 04. Columns
+ * 05. Backgrounds
+ * 06. Min/Max Widths
+ * 07. Links and Anchors
+ */
+
+// 00. Global
+.clickable, .scroll-to {
+	cursor: pointer;
+	outline: none !important;
+}
+
+.not-clickable, .not-clickable > a {
+	cursor: auto;
+}
+
+.cover, .background-cover {
+	background-size: cover;
+	background-position: center center;
+}
+
+a:focus {
+	outline: none !important;
+}
+
+.inline-list {
+	li {
+		display: inline-block;
+	}
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.block {
+	display: block;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.justify-columns {
+	justify-content: space-between;
+}
+
+@media #{$medium-up} {
+	.list-col-2 {
+		columns: 2;
+		-webkit-columns: 2;
+		-moz-columns: 2;
+		 li {
+			 padding-right: 2rem;
+		 }
+	}
+
+	.list-col-3 {
+		columns: 3;
+		-webkit-columns: 3;
+		-moz-columns: 3;
+		li {
+			padding-right: 2rem;
+		}
+	}
+}
+
+table {
+	word-break: unset;
+}
+
+input,
+textarea {
+	border-radius: 0 !important;
+}
+
+input[type="checkbox"] {
+	vertical-align: top !important;
+	margin-top: 9px !important;
+}
+
+// 01. Socials
+ul.social-menu {
+	li {
+		display: inline-block;
+		vertical-align: middle;
+
+		a {
+			font-size: 0;
+			text-align: center;
+			vertical-align: middle;
+			display: block;
+			color: $primary-color;
+
+			&:before {
+				font-size: 3.2rem;
+				line-height: 3.2rem;
+			}
+
+			&:hover {
+				color: $primary-dark;
+			}
+		}
+	}
+}
+
+ul.shortcode-social-menu {
+	> li {
+		margin-bottom: 0;
+		padding-bottom: 0;
+
+		a {
+			display: block;
+			color: transparent;
+			background: none;
+
+			&:before {
+				color: $secondary-color;
+			}
+
+			&:hover {
+				&:before {
+					color: $primary-color;
+				}
+			}
+		}
+	}
+}
+
+// 02. Breakpoints
+.xs-show, .show-for-xs-only {
+	display: none;
+	@media #{$xsmall-only} {
+		display: block;
+	}
+}
+
+.xs-hide, .hide-for-xs {
+	@media #{$xsmall-only} {
+		display: none;
+	}
+}
+
+.show-for-medium {
+	@media #{$small-only} {
+		display: none;
+	}
+}
+
+.hide-for-medium {
+	@media #{$medium-up} {
+		display: none;
+	}
+}
+
+.show-for-large {
+	@media #{$medium-down} {
+		display: none !important;
+	}
+}
+
+.hide-for-large {
+	@media #{$large-up} {
+		display: none !important;
+	}
+}
+
+.show-for-desktop, .hide-for-mobile, .hide-for-small {
+	@media only screen and (max-width: 800px) {
+		display: none !important;
+	}
+}
+
+.show-for-mobile, .hide-for-desktop, .show-for-small {
+	@media only screen and (min-width: 801px) {
+		display: none !important;
+	}
+}
+
+// 03. Spacing
+@include spacing-layout( 'padding' );
+@include spacing-layout( 'margin' );
+
+@media #{$medium-up} {
+	@include spacing-layout( 'padding', 'medium' );
+	@include spacing-layout( 'margin', 'medium' );
+}
+
+@media #{$large-up} {
+	@include spacing-layout( 'padding', 'large' );
+	@include spacing-layout( 'margin', 'large' );
+}
+
+@media #{$xlarge-up} {
+	@include spacing-layout( 'padding', 'xlarge' );
+	@include spacing-layout( 'margin', 'xlarge' );
+}
+
+@media only screen and (min-width: 801px) {
+	@include spacing-layout( 'padding', 'desktop' );
+	@include spacing-layout( 'margin', 'desktop' );
+}
+
+// 04. Columns
+
+@for $i from 1 through 12 {
+	.small-#{$i} {
+		width: #{100% * $i / 12};
+	}
+}
+
+@media #{$medium-up} {
+	@for $i from 1 through 12 {
+		.medium-#{$i} {
+			width: #{100% * $i / 12};
+		}
+	}
+}
+
+@media #{$large-up} {
+	@for $i from 1 through 12 {
+		.large-#{$i} {
+			width: #{100% * $i / 12};
+		}
+	}
+}
+
+@media #{$xlarge-up} {
+	@for $i from 1 through 12 {
+		.xlarge-#{$i} {
+			width: #{100% * $i / 12};
+		}
+	}
+}
+
+// 05. Backgrounds
+.extend-bg, .extend-background, .background-extend, .bg-extend,
+.expand-bg, .expand-background, .background-expand, .bg-expand {
+	position: relative;
+	z-index: 2;
+	background-size: 0px 0px;
+
+	&:before {
+		content: '';
+		display: block;
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		bottom: 0;
+		left: -50vw;
+		right: -50vw;
+		background-color: inherit;
+		background-image: inherit;
+		background-size: cover;
+		background-position: center center;
+	}
+}
+
+// 06. Min/Max Widths
+
+@for $w from 1 through 20 {
+	.min-width-#{$w * 50} {
+		min-width: #{$w * 50}px;
+	}
+	.max-width-#{$w * 50} {
+		max-width: #{$w * 50}px;
+	}
+
+	@media #{$medium-up} {
+		.medium-min-width-#{$w * 50} {
+			min-width: #{$w * 50}px;
+		}
+		.medium-max-width-#{$w * 50} {
+			max-width: #{$w * 50}px;
+		}
+	}
+}
+
+// 07. Links and Anchors
+
+a.text-link, .text-link a {
+	font-family: $body-font-family !important;
+	font-weight: $body-bold;
+	color: $black !important;
+	position: relative;
+	display: inline-block;
+	font-size: 1.5rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	line-height: 1.75em;
+
+	&:before {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 2px;
+		background-color: $primary-color;
+	}
+
+	&.white {
+		color: $white !important;
+	}
+}
+
+// Adjusting Page anchors for Nav height
+.anchor-point {
+	display: block;
+	width: 0px;
+	background: transparent;
+	outline: none !important;
+	border: none !important;
+	visibility: hidden;
+	position: relative;
+	left: -100vw;
+
+	&:focus, &:active {
+		outline: none !important;
+		border: none !important;
+	}
+
+	// These Should Match
+	margin-top: -13rem;
+	height: 13rem;
+}
